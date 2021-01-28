@@ -31,6 +31,7 @@ public class UserService {
 
         try {
             User save = repository.save(user);
+
             System.out.println(user.toString());
             if (save!=null&&!save.getAccount().equals("")){
                 return true;
