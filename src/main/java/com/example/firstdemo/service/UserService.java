@@ -2,11 +2,9 @@ package com.example.firstdemo.service;
 
 import com.example.firstdemo.entity.User;
 import com.example.firstdemo.repository.UserRepository;
-import org.apache.ibatis.jdbc.Null;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.thymeleaf.util.TextUtils;
 
 import java.util.List;
 
@@ -21,14 +19,17 @@ public class UserService {
         return repository.findAll();
     }
 
-    public List<User> findByName(String name)
+    public User findByName(String name)
     {
-        return repository.findByName(name);
+        return repository.findByAccount(name);
     }
 
     public boolean add(User user)
     {
 
+        if (findByName(user.getAccount()) != null) {
+            return false;
+        }
         try {
             User save = repository.save(user);
 
@@ -46,17 +47,39 @@ public class UserService {
 
     }
 
-    public boolean modify(Integer id,String name)
+    public boolean modifyPsw(String name,String newpwd)
     {
-        User user = new User();
-        user.setAccount(name);
-        user.setId(id);
-        repository.save(user);
-        return true;
+        User user = findByName(name);
+        if (user!=null){
+            user.setId(user.getId());
+            user.setPassword(newpwd);
+            repository.save(user);
+            return true;
+        }
+        return false;
+    }
+    public boolean modifyCover(String account,String coverpath){
+        User user = findByName(account);
+        if (user!=null){
+            user.setId(user.getId());
+            user.setHead_cover(coverpath);
+            repository.save(user);
+            return true;
+        }
+
+
+        return false;
     }
 
     public boolean deleteByName(String name)
     {
         return repository.deleteByName(name) != 0;
+    }
+
+    public User login(String username,String password){
+        System.out.println("jae进入方法");
+        User user = repository.loginUser(username, password);
+        System.out.println("jae"+user.getAccount());
+        return user;
     }
 }

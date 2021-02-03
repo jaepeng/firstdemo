@@ -11,7 +11,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping(path = "/firstdemo")
-public class MainController {
+public class UserController {
     @Autowired
     private UserService userService;
 
@@ -36,9 +36,24 @@ public class MainController {
         return userService.add(user);
     }
 
-    @PostMapping(path = "/findByName")
-    public @ResponseBody List<User> findByName(String username){
+    @GetMapping(path = "/findByName")
+    public @ResponseBody User findByName(String username){
         return userService.findByName(username);
+    }
+
+    @PostMapping(path = "/changeCover")
+    public @ResponseBody boolean modifyCover(String account,String coverpath){
+        return userService.modifyCover(account,coverpath);
+    }
+
+    @PostMapping(path = "/login")
+    public @ResponseBody User login(String username,String password){
+        return userService.login(username,password);
+    }
+
+    @GetMapping(path = "/changePsw")
+    public @ResponseBody boolean changePsw(String username,String newpsw){
+        return userService.modifyPsw(username,newpsw);
     }
 
 }

@@ -12,13 +12,13 @@ import java.util.List;
 
 @Repository
 public interface TicketHistoryRepository extends CrudRepository<TicketHistory,String> {
-    @Query(value = "select * from "+ Constans.TABLE_TICKET_HISTORY +" where time = ?1 and useraccount=?2",nativeQuery = true)
+    @Query(value = "select * from "+ Constans.TABLE_TICKET_HISTORY +" where "+TableConstans.TICKET_HISTORY_TIME+" = ?1 and useraccount=?2",nativeQuery = true)
     public List<TicketHistory> findByTime(String time,String account);
 
-    @Query(value = "select * from "+Constans.TABLE_TICKET_HISTORY+" where useraccount=?1",nativeQuery = true)
+    @Query(value = "select * from "+Constans.TABLE_TICKET_HISTORY+" where "+TableConstans.TICKET_HISTORY_USERACCOUNT+"=?1",nativeQuery = true)
     public List<TicketHistory>findByAccount(String account);
 
-    @Query(value = "select * from "+ Constans.TABLE_TICKET_HISTORY +" where content = ?1 and useraccount=?2",nativeQuery = true)
+    @Query(value = "select * from "+ Constans.TABLE_TICKET_HISTORY +" where "+TableConstans.TICKET_HISTORY_CONTENT+" = ?1 and "+TableConstans.TICKET_HISTORY_USERACCOUNT+"=?2",nativeQuery = true)
     public List<TicketHistory> findByContent(String content,String account);
 
 

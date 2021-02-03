@@ -12,6 +12,7 @@ public class User {
     private Integer id;
     private String account;
     private String password;
+    private String head_cover;
 
     public User() {
     }
@@ -19,6 +20,19 @@ public class User {
     public User(String account, String password) {
         this.account = account;
         this.password = password;
+    }
+
+    public User(String account, String password, String head_cover) {
+        this.account = account;
+        this.password = password;
+        this.head_cover = head_cover;
+    }
+
+    public User(Integer id, String account, String password, String head_cover) {
+        this.id = id;
+        this.account = account;
+        this.password = password;
+        this.head_cover = head_cover;
     }
 
     public Integer getId() {
@@ -43,5 +57,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getHead_cover() {
+        return head_cover;
+    }
+
+    public void setHead_cover(String headCover) {
+        this.head_cover = headCover;
     }
 }
