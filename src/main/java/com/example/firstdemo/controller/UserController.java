@@ -36,21 +36,44 @@ public class UserController {
         return userService.add(user);
     }
 
+    /**
+     * 通过用户名寻找用户
+     * @param username
+     * @return
+     */
     @GetMapping(path = "/findByName")
     public @ResponseBody User findByName(String username){
         return userService.findByName(username);
     }
 
+    /**
+     * 修改头像链接
+     * @param account
+     * @param coverpath
+     * @return
+     */
     @PostMapping(path = "/changeCover")
     public @ResponseBody boolean modifyCover(String account,String coverpath){
         return userService.modifyCover(account,coverpath);
     }
 
+    /**
+     * 账户密码登录
+     * @param username
+     * @param password
+     * @return
+     */
     @PostMapping(path = "/login")
     public @ResponseBody User login(String username,String password){
         return userService.login(username,password);
     }
 
+    /**
+     * 修改密码
+     * @param username
+     * @param newpsw
+     * @return
+     */
     @GetMapping(path = "/changePsw")
     public @ResponseBody boolean changePsw(String username,String newpsw){
         return userService.modifyPsw(username,newpsw);
