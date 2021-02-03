@@ -32,10 +32,20 @@ public class TicketHistoryService {
         //如果这个添加的优惠券已经是第一个,则不会再添加
         String content = ticketHistory.getContent();
         String useraccount = ticketHistory.getUseraccount();
+        System.out.println("conent"+content);
+        System.out.println("usercontent"+useraccount);
         //这个列表已经被翻转了
         ArrayList<TicketHistory> allTicketHistory = (ArrayList<TicketHistory>) getAllTicketHistory(ticketHistory.getUseraccount());
-        if (allTicketHistory.get(0).getContent().equals(ticketHistory.getContent())) {
-            return false;
+//        if(allTicketHistory==null){
+//            return false;
+//        }else if (allTicketHistory.get(0).getContent().equals(ticketHistory.getContent())) {
+//            return false;
+//        }
+        if (allTicketHistory!=null&&!(allTicketHistory.size()==0)){
+            //如果根据用户名找到的领券记录长度不为0
+            if (allTicketHistory.get(0).getContent().equals(ticketHistory.getContent())){
+                return false;
+            }
         }
 
         try {
