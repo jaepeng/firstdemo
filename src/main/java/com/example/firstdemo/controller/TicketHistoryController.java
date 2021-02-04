@@ -19,7 +19,7 @@ public class TicketHistoryController {
      * 查找当前用户所有的历史记录
      * @return
      */
-    @PostMapping(path = "/findAll")
+    @GetMapping(path = "/findAll")
     public @ResponseBody Iterable<TicketHistory> findByName(String username){
         return ticketService.getAllTicketHistory(username);
     }
