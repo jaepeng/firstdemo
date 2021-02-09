@@ -79,4 +79,13 @@ public class UserController {
         return userService.modifyPsw(username,newpsw);
     }
 
+    /**
+     * 找到所有已注册人名称
+     * @return
+     */
+    @GetMapping(path = "/getAllName")
+    public @ResponseBody Iterable<String> findAllName(){
+        return userService.findAllName();
+    }
+
 }

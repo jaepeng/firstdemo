@@ -17,20 +17,24 @@ public class TicketHistoryController {
 
     /**
      * 查找当前用户所有的历史记录
+     *
      * @return
      */
-    @PostMapping(path = "/findAll")
-    public @ResponseBody Iterable<TicketHistory> findByName(String username){
+    @GetMapping(path = "/findAll")
+    public @ResponseBody
+    Iterable<TicketHistory> findByName(String username) {
         return ticketService.getAllTicketHistory(username);
     }
+
     /**
      * 添加一个领券记录
+     *
      * @param ticketHistory
      * @return
      */
     @PostMapping(path = "/add")
-    public @ResponseBody boolean add(@RequestBody TicketHistory ticketHistory)
-    {
+    public @ResponseBody
+    boolean add(@RequestBody TicketHistory ticketHistory) {
         return ticketService.add(ticketHistory);
     }
 

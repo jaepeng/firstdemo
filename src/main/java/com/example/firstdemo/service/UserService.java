@@ -77,9 +77,19 @@ public class UserService {
     }
 
     public User login(String username,String password){
-        System.out.println("jae进入方法");
         User user = repository.loginUser(username, password);
-        System.out.println("jae"+user.getAccount());
         return user;
     }
+
+    /**
+     * 所有已注册人名称
+     * @return
+     */
+    public Iterable<String> findAllName(){
+        Iterable<String> allName = repository.findAllName();
+        return allName;
+    }
+
+
+
 }

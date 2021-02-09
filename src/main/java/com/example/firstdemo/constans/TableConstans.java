@@ -1,4 +1,4 @@
-package com.example.firstdemo.repository;
+package com.example.firstdemo.constans;
 
 public class TableConstans {
     /**************************User表中的字段名********************************************/
@@ -23,4 +23,10 @@ public class TableConstans {
     public static final String TICKET_HISTORY_TIME = "time";
     //id
     public static final String TICKET_HISTORY_ID = "id";
+
+
+
+    /********************************FaceRegisterInfo中的字段名*****************************/
+    public static final String FACE_REGISTER_FEATURE="data";
+    public static final String FACE_REGISTER_NAME="name";
 }
