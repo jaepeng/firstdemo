@@ -60,8 +60,27 @@ public class FaceRegiterInfoService {
 
     }
 
+    /**
+     * 找到所有人脸注册用户名
+     * @return
+     */
+
     public List<String> findAllName(){
         return registerRepository.finAllName();
+    }
+
+    public void deleteAllFaceRegister(){
+        System.out.println("清除所有人脸数据");
+        registerRepository.deleteAll();
+    }
+
+
+    public int deleteFaceRegisterByName(String name)
+    {
+
+        int count = registerRepository.deleteByName(name);
+        System.out.println(count);
+        return count;
     }
 
 

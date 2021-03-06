@@ -54,4 +54,19 @@ public class FaceRegisterController {
         return faceRegiterInfoService.findByName(name);
 
     }
+
+    @GetMapping("/deleteAllFaceRegister")
+    public @ResponseBody void
+    deleteAllName(){
+        faceRegiterInfoService.deleteAllFaceRegister();
+    }
+    @GetMapping("/deleteFaceRegisterByName")
+    public @ResponseBody int
+    deletByName(String name){
+        int count = faceRegiterInfoService.deleteFaceRegisterByName(name);
+        if (count!=0){
+            return count;
+        }
+        return 0;
+    }
 }

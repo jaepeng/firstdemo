@@ -34,7 +34,7 @@ public class TicketHistoryService {
         String useraccount = ticketHistory.getUseraccount();
         //这个列表已经被翻转了
         ArrayList<TicketHistory> allTicketHistory = (ArrayList<TicketHistory>) getAllTicketHistory(ticketHistory.getUseraccount());
-        if (allTicketHistory.get(0).getContent().equals(ticketHistory.getContent())) {
+        if (allTicketHistory!=null&&allTicketHistory.size()>0&&allTicketHistory.get(0).getContent().equals(ticketHistory.getContent())) {
             return false;
         }
 

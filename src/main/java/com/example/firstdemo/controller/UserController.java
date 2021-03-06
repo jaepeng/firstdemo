@@ -4,6 +4,7 @@ import com.example.firstdemo.entity.User;
 import com.example.firstdemo.repository.UserRepository;
 import com.example.firstdemo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -86,6 +87,12 @@ public class UserController {
     @GetMapping(path = "/getAllName")
     public @ResponseBody Iterable<String> findAllName(){
         return userService.findAllName();
+    }
+
+    @GetMapping(path = "/delteByName")
+    public @ResponseBody void delteByName(String name){
+        userService.deleteByName(name);
+
     }
 
 }

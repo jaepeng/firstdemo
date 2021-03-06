@@ -1,7 +1,7 @@
 package com.example.firstdemo.constans;
 
 public class TableConstans {
-    /**************************User表中的字段名********************************************/
+    /**************************用户User表中的字段名********************************************/
     //账号
     public static final String USER_ACCOUNT = "account";
     //密码
@@ -10,7 +10,7 @@ public class TableConstans {
     public static final String USER_ID = "id";
 
 
-    /*************************************TicketHistory中的字段名*************************/
+    /*************************************领券历史记录TicketHistory中的字段名*************************/
     //券内容
     public static final String TICKET_HISTORY_CONTENT = "content";
     //用户名
@@ -24,9 +24,12 @@ public class TableConstans {
     //id
     public static final String TICKET_HISTORY_ID = "id";
 
-
-
     /********************************FaceRegisterInfo中的字段名*****************************/
     public static final String FACE_REGISTER_FEATURE="data";
     public static final String FACE_REGISTER_NAME="name";
+
+    /**********************浏览记录BrowsingHistory*****************************/
+    public static final String BROWSING_CONTENT="content";
+    public static final String BROWSING_COVER="cover";
+    public static final String BROWSING_USERACCOUNT="useraccount";
 }
