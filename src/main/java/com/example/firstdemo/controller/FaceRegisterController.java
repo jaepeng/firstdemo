@@ -33,6 +33,7 @@ public class FaceRegisterController {
     @PostMapping("/addRegisterInfo")
     public @ResponseBody
     boolean add(@RequestBody FaceRegisterInfo registerInfo) {
+        System.out.println(registerInfo.getName());
         return faceRegiterInfoService.add(registerInfo);
     }
 
@@ -42,6 +43,7 @@ public class FaceRegisterController {
     @PostMapping("/addAllRegisterInfo")
     public @ResponseBody
     boolean add(@RequestBody List<FaceRegisterInfo> registerInfos) {
+        System.out.println(registerInfos.get(0).getName());
         return faceRegiterInfoService.addAll(registerInfos);
     }
 

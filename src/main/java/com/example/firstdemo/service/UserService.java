@@ -2,6 +2,7 @@ package com.example.firstdemo.service;
 
 import com.example.firstdemo.entity.User;
 import com.example.firstdemo.repository.UserRepository;
+import com.example.firstdemo.utils.MD5Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -52,6 +53,7 @@ public class UserService {
         User user = findByName(name);
         if (user!=null){
             user.setId(user.getId());
+            newpwd=MD5Utils.encode2hex(newpwd);
             user.setPassword(newpwd);
             repository.save(user);
             return true;

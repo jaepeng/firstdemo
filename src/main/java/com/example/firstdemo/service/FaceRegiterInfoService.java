@@ -53,6 +53,7 @@ public class FaceRegiterInfoService {
      * @return
      */
     public List<FaceRegisterInfo> findByName(String name){
+        System.out.println(name);
         if (name.isEmpty()){
             return null;
         }
