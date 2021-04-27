@@ -68,11 +68,13 @@ public class UserService {
             repository.save(user);
             return true;
         }
-
-
         return false;
     }
 
+    public String getHeaderCover(String username){
+        System.out.println("cover:"+findByName(username).getHead_cover());
+        return findByName(username).getHead_cover();
+    }
     public boolean deleteByName(String name)
     {
         return repository.deleteByName(name) != 0;
