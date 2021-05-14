@@ -16,7 +16,8 @@ public interface BrowsingHistoryRespository extends CrudRepository<BrowsingHistr
     @Query(value = "select * from "+ Constans.TABLE_BROWSING_HISTORY +" where "+ TableConstans.BROWSING_USERACCOUNT+"=?1",nativeQuery = true)
     public List<BrowsingHistroy> findByAccount(String account);
 
-
+    @Query(value = "SELECT content FROM browsing_histroy ",nativeQuery = true)
+    public List<String> findAllSearch();
 
 
 }

@@ -1,5 +1,6 @@
 package com.example.firstdemo.controller;
 
+import com.example.firstdemo.entity.HistoryCount;
 import com.example.firstdemo.entity.TicketHistory;
 import com.example.firstdemo.entity.User;
 import com.example.firstdemo.service.TicketHistoryService;
@@ -26,6 +27,12 @@ public class TicketHistoryController {
         return ticketService.getAllTicketHistory(username);
     }
 
+    @GetMapping(path = "/findByCategory")
+    public @ResponseBody
+    Iterable<TicketHistory> findByNameAndCategory(String username,String category) {
+        return ticketService.getTicketHistoryByCategoryAndName(username,category);
+    }
+
     /**
      * 添加一个领券记录
      *
@@ -39,4 +46,9 @@ public class TicketHistoryController {
     }
 
 
+    @GetMapping(path = "/findCategoryCount")
+    public @ResponseBody Iterable<HistoryCount> findCategoryCount(String username){
+        System.out.println("findCategoryCount"+username);
+        return ticketService.getHistoryCount(username);
+    }
 }

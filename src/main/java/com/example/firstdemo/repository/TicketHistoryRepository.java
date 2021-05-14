@@ -20,5 +20,13 @@ public interface TicketHistoryRepository extends CrudRepository<TicketHistory,St
     @Query(value = "select * from "+ Constans.TABLE_TICKET_HISTORY +" where "+TableConstans.TICKET_HISTORY_CONTENT+" = ?1 and "+TableConstans.TICKET_HISTORY_USERACCOUNT+"=?2",nativeQuery = true)
     public List<TicketHistory> findByContent(String content,String account);
 
+    @Query(value = "select * from "+Constans.TABLE_TICKET_HISTORY+" where "+TableConstans.TICKET_HISTORY_USERACCOUNT+"=?1 and "+TableConstans.TICKET_HISTORY_CATEGORY+"=?2",nativeQuery = true)
+    public List<TicketHistory>findByAccountAndCategory(String account,String category);
+
+    @Query(value = "SELECT category,COUNT(category) FROM ticket_history WHERE useraccount"+"=?1"+" GROUP BY category ",nativeQuery = true)
+    public List findCategoryNum(String username);
+
+
+
 
 }

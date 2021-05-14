@@ -21,6 +21,8 @@ public class TableConstans {
     public static final String TICKET_HISTORY_TITLE = "title";
     //领取时间
     public static final String TICKET_HISTORY_TIME = "time";
+    //领取类别
+    public static final String TICKET_HISTORY_CATEGORY = "category";
     //id
     public static final String TICKET_HISTORY_ID = "id";
 

@@ -78,8 +78,13 @@ public class UserController {
      * @return
      */
     @GetMapping(path = "/changePsw")
-    public @ResponseBody boolean changePsw(String username,String newpsw){
-        return userService.modifyPsw(username,newpsw);
+    public @ResponseBody boolean changePsw(String username,String oldPsw,String newpsw){
+        if (userService.login(username,oldPsw)!=null){
+            return userService.modifyPsw(username,newpsw);
+        }else{
+            return false;
+        }
+
     }
 
     /**

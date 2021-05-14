@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping(path = "/browsingHistory")
 public class BrowsingHistoryController {
@@ -17,9 +19,19 @@ public class BrowsingHistoryController {
         System.out.println("Controller.name:" + useraccount);
         return browserService.getAllHistory(useraccount);
     }
-    @PostMapping("/add")
+        @PostMapping("/add")
     public @ResponseBody boolean addHistory(@RequestBody BrowsingHistroy browsingHistroy){
         return browserService.add(browsingHistroy);
+    }
+
+    /**
+     * 获取热词
+     * @return
+     */
+    @GetMapping("/getHotWord")
+    public @ResponseBody
+    List<String> getHotkey(){
+        return browserService.getHotWord();
     }
 
 

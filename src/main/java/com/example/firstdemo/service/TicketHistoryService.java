@@ -1,5 +1,6 @@
 package com.example.firstdemo.service;
 
+import com.example.firstdemo.entity.HistoryCount;
 import com.example.firstdemo.entity.TicketHistory;
 import com.example.firstdemo.entity.User;
 import com.example.firstdemo.repository.TicketHistoryRepository;
@@ -10,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.StringTokenizer;
 
 @Transactional
 @Service
@@ -25,6 +27,31 @@ public class TicketHistoryService {
     public Iterable<TicketHistory> getTicketHistoryByTime(String account,String time){
         return repository.findByTime(account,time);
     }
+    public Iterable<TicketHistory> getTicketHistoryByCategoryAndName(String account,String category){
+        List<TicketHistory> byAccountAndCategory = repository.findByAccountAndCategory(account, category);
+        Collections.reverse(byAccountAndCategory);
+        return byAccountAndCategory;
+    }
+
+    public Iterable<HistoryCount> getHistoryCount(String username){
+        System.out.println("username"+username);
+        List categoryNum = repository.findCategoryNum(username);
+        if (categoryNum==null||categoryNum.isEmpty()){
+            System.out.println("size 0");
+            return null;
+        }
+        List<HistoryCount> historyCounts=new ArrayList<>();
+        for (Object o : categoryNum) {
+            Object[] oo=(Object[])o;
+            if (null!=oo[0]){
+                HistoryCount historyCount=new HistoryCount((String)oo[0], Integer.parseInt(oo[1]+""));
+                historyCounts.add(historyCount);
+            }
+        }
+        return historyCounts;
+
+
+    }
 
     public boolean add(TicketHistory ticketHistory)
     {
@@ -32,15 +59,19 @@ public class TicketHistoryService {
         //如果这个添加的优惠券已经是第一个,则不会再添加
         String content = ticketHistory.getContent();
         String useraccount = ticketHistory.getUseraccount();
+        System.out.println(ticketHistory.toString());
         //这个列表已经被翻转了
         ArrayList<TicketHistory> allTicketHistory = (ArrayList<TicketHistory>) getAllTicketHistory(ticketHistory.getUseraccount());
-        if (allTicketHistory!=null&&allTicketHistory.size()>0&&allTicketHistory.get(0).getContent().equals(ticketHistory.getContent())) {
-            return false;
+        System.out.println(allTicketHistory.size());
+        if (null!=allTicketHistory&&!allTicketHistory.isEmpty()){
+            System.out.println("allTicketNOt EMPTY");
+            if (allTicketHistory.get(0).getContent().equals(content)){
+                return false;
+            }
         }
 
         try {
             TicketHistory save = repository.save(ticketHistory);
-
             if (save!=null&&!save.getContent().equals("")){
                 return true;
             }else {

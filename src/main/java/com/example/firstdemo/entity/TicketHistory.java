@@ -15,17 +15,26 @@ public class TicketHistory {
     String useraccount;
     String coverpath;
     String title;
-
+    String category;//目录类别
     String time;
 
 
-    public TicketHistory(Integer id, String content, String useraccount, String coverpath, String title, String time) {
+    public TicketHistory(Integer id, String content, String useraccount, String coverpath, String title, String time,String category) {
         this.id = id;
         this.content = content;
         this.useraccount = useraccount;
         this.coverpath = coverpath;
         this.title = title;
         this.time = time;
+        this.category=category;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public TicketHistory() {
@@ -97,10 +106,12 @@ public class TicketHistory {
     @Override
     public String toString() {
         return "TicketHistory{" +
-                "useraccount='" + useraccount + '\'' +
+                "id=" + id +
+                ", content='" + content + '\'' +
+                ", useraccount='" + useraccount + '\'' +
                 ", coverpath='" + coverpath + '\'' +
                 ", title='" + title + '\'' +
-                ", content='" + content + '\'' +
+                ", category='" + category + '\'' +
                 ", time='" + time + '\'' +
                 '}';
     }
